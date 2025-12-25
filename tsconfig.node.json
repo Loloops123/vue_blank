@@ -6,7 +6,12 @@
     "cypress.config.*",
     "nightwatch.conf.*",
     "playwright.config.*",
-    "eslint.config.*"
+    "eslint.config.*",
+    ".storybook/vite.config.*",
+    ".storybook/vitest.config.*",
+    ".storybook/vitest.setup.*",
+    ".storybook/**/*",
+    ".scripts/**/*"
   ],
   "compilerOptions": {
     "noEmit": true,

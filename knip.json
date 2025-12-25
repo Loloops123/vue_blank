@@ -3,5 +3,10 @@
   "entry": ["src/main.ts"],
   "project": ["src/**/*.{ts,vue}"],
   "ignore": ["**/*.d.ts"],
-  "ignoreDependencies": ["tailwindcss", "@iconify/json"]
+  "ignoreDependencies": [
+    "tailwindcss",
+    "@iconify/json",
+    "@vitest/coverage-v8",
+    "@vue/test-utils"
+  ]
 }

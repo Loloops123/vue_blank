@@ -1,3 +1,4 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import pluginVitest from '@vitest/eslint-plugin'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import {
@@ -7,6 +8,7 @@ import {
 import pluginOxlint from 'eslint-plugin-oxlint'
 import pluginSecurity from 'eslint-plugin-security'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import pluginStorybook from 'eslint-plugin-storybook'
 import pluginUnicorn from 'eslint-plugin-unicorn'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
 import pluginVue from 'eslint-plugin-vue'
@@ -40,7 +42,7 @@ export default defineConfigWithVueTs(
   },
   pluginUnicorn.configs['recommended'],
   pluginSecurity.configs.recommended,
-
+  ...pluginStorybook.configs['flat/recommended'],
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],

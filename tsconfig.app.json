@@ -1,10 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "vitest.shims.d.ts"],
   "exclude": ["src/**/*.spec.ts", "src/**/*.stories.ts"],
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "moduleResolution": "bundler",
+    "module": "esnext",
     "noUncheckedIndexedAccess": true,
     "types": ["unplugin-icons/types/vue"],
     "baseUrl": ".",

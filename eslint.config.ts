@@ -8,6 +8,7 @@ import pluginOxlint from 'eslint-plugin-oxlint'
 import pluginSecurity from 'eslint-plugin-security'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import pluginUnicorn from 'eslint-plugin-unicorn'
+import pluginUnusedImports from 'eslint-plugin-unused-imports'
 import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
@@ -56,6 +57,9 @@ export default defineConfigWithVueTs(
   },
   {
     name: 'app/custom-rules',
+    plugins: {
+      'unused-imports': pluginUnusedImports,
+    },
     rules: {
       'vue/no-v-html': 'off',
       'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
@@ -68,6 +72,17 @@ export default defineConfigWithVueTs(
       'unicorn/prefer-at': 'error',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   ...pluginOxlint.configs['flat/recommended'],

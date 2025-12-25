@@ -9,7 +9,7 @@
       class="block w-auto shadow-2xl"
       role="term"
     >
-      123123123123123123123123123123123
+      blank_template
     </span>
   </h1>
 </template>

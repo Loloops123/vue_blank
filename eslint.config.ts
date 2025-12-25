@@ -57,15 +57,17 @@ export default defineConfigWithVueTs(
       'simple-import-sort/exports': 'error',
     },
   },
+  ...pluginOxlint.configs['flat/recommended'],
   {
     name: 'app/custom-rules',
+    files: ['**/*.{ts,mts,tsx,vue}'],
     plugins: {
       'unused-imports': pluginUnusedImports,
     },
     rules: {
       'vue/no-v-html': 'off',
-      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-console': 'warn',
+      'no-debugger': 'warn',
       'vue/multi-word-component-names': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       'unicorn/filename-case': 'off',
@@ -87,6 +89,6 @@ export default defineConfigWithVueTs(
       ],
     },
   },
-  ...pluginOxlint.configs['flat/recommended'],
+
   skipFormatting,
 )

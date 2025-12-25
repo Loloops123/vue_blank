@@ -1,29 +1,74 @@
-import { globalIgnores } from 'eslint/config'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
-import pluginVue from 'eslint-plugin-vue'
 import pluginVitest from '@vitest/eslint-plugin'
-import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-
-// To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
-// import { configureVueProject } from '@vue/eslint-config-typescript'
-// configureVueProject({ scriptLangs: ['ts', 'tsx'] })
-// More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
+import {
+  defineConfigWithVueTs,
+  vueTsConfigs,
+} from '@vue/eslint-config-typescript'
+import pluginOxlint from 'eslint-plugin-oxlint'
+import pluginSecurity from 'eslint-plugin-security'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import pluginUnicorn from 'eslint-plugin-unicorn'
+import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
   },
+  {
+    name: 'app/ignores',
+    ignores: [
+      '**/dist/**',
+      '**/dist-ssr/**',
+      '**/coverage/**',
+      'commitlint.config.js',
+      'knip.json',
+    ],
+  },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  pluginVue.configs['flat/recommended'],
+  vueTsConfigs.recommendedTypeChecked,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+        allowDefaultProject: ['*.js', '*.ts', '*.mjs'],
+      },
+    },
+  },
+  pluginUnicorn.configs['recommended'],
+  pluginSecurity.configs.recommended,
 
-  pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
-  
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
+  },
+  {
+    name: 'app/import-sorting',
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
+    rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+    },
+  },
+  {
+    name: 'app/custom-rules',
+    rules: {
+      'vue/no-v-html': 'off',
+      'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+      'vue/multi-word-component-names': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      'unicorn/filename-case': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/no-null': 'off',
+      'unicorn/prefer-at': 'error',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+    },
   },
   ...pluginOxlint.configs['flat/recommended'],
   skipFormatting,

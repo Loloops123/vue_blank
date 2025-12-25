@@ -2,5 +2,20 @@
   "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
   "singleQuote": true,
-  "printWidth": 100
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "vueIndentScriptAndStyle": false,
+  "singleAttributePerLine": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "plugins": [
+    "@prettier/plugin-oxc",
+    "@prettier/plugin-xml",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-tailwindcss"
+  ]
 }

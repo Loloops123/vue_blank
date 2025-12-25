@@ -5,6 +5,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "noUncheckedIndexedAccess": true,
+    "types": ["unplugin-icons/types/vue"],
     "paths": {
       "@/*": ["./src/*"]
     }

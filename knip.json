@@ -3,5 +3,5 @@
   "entry": ["src/main.ts"],
   "project": ["src/**/*.{ts,vue}"],
   "ignore": ["**/*.d.ts"],
-  "ignoreDependencies": ["tailwindcss"]
+  "ignoreDependencies": ["tailwindcss", "@iconify/json"]
 }

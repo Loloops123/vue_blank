@@ -8,9 +8,11 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
-      environment: 'jsdom',
+      environment: 'happy-dom',
       exclude: [...configDefaults.exclude, 'e2e/**'],
+      include: ['./src/**/*.spec.ts'],
       root: fileURLToPath(new URL('./', import.meta.url)),
+      watch: false,
     },
   }),
 )

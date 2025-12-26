@@ -9,7 +9,7 @@
     }"
     :data-testid="testId"
     :disabled="disabled"
-    @click="(e) => $emit('click', e)"
+    @click="() => $emit('click')"
   >
     {{ text }}
   </button>
@@ -24,6 +24,6 @@ defineProps<{
 }>()
 
 defineEmits<{
-  (e: 'click', value: MouseEvent): void
+  (e: 'click'): void
 }>()
 </script>
